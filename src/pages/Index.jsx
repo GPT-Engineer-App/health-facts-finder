@@ -66,26 +66,20 @@ const Index = () => {
     <VStack spacing={4}>
       <Heading>Ingredient Analyzer</Heading>
       <Text>Find out what's in your products, and what it means for your health.</Text>
-
-      {!streamStarted ? (
-        <Button leftIcon={<FaCamera />} colorScheme="teal" onClick={() => setStreamStarted(true)}>
-          Start Camera
-        </Button>
-      ) : (
-        <Box>
-          {permissionGranted ? (
-            <Box>
-              <video ref={videoRef} autoPlay playsInline style={{ width: "100%", height: "auto" }}></video>
-              <Button leftIcon={<FaSearch />} colorScheme="blue" onClick={captureImage}>
-                Capture Image
-              </Button>
-            </Box>
-          ) : (
-            <Text>Camera permission is required to continue.</Text>
-          )}
-        </Box>
-      )}
-
+      <Button leftIcon={<FaCamera />} colorScheme="teal" onClick={() => setStreamStarted(!streamStarted)}>
+        Start Camera
+      </Button>
+      <Box>
+        {permissionGranted && (
+          <>
+            <video ref={videoRef} autoPlay playsInline style={{ width: "100%", height: "auto" }}></video>
+            <Button leftIcon={<FaSearch />} colorScheme="blue" onClick={captureImage}>
+              Capture Image
+            </Button>
+          </>
+        )}
+        {!permissionGranted && <Text>Camera permission is required to continue.</Text>}
+      </Box>
       <List spacing={3}>
         {ingredients.map((ingredient, index) => (
           <ListItem key={index}>

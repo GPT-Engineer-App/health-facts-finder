@@ -75,7 +75,7 @@ const Index = () => {
         <Box>
           {permissionGranted ? (
             <Box>
-              <video ref={videoRef} autoPlay={true} playsInline={true} style={{ width: "100%", height: "auto" }}></video>
+              <video ref={videoRef} autoPlay playsInline style={{ width: "100%", height: "auto" }}></video>
               <Button leftIcon={<FaSearch />} colorScheme="blue" onClick={captureImage}>
                 Capture Image
               </Button>

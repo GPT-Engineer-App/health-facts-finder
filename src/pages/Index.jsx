@@ -66,7 +66,7 @@ const Index = () => {
     <VStack spacing={4}>
       <Heading>Ingredient Analyzer</Heading>
       <Text>Find out what's in your products, and what it means for your health.</Text>
-      <Button leftIcon={<FaCamera />} colorScheme="teal" onClick={() => setStreamStarted((prev) => !prev)}>
+      <Button leftIcon={<FaCamera />} colorScheme="teal" onClick={() => !streamStarted && setStreamStarted(true)}>
         Start Camera
       </Button>
       <Box>
